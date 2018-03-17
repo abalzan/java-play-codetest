@@ -23,6 +23,6 @@ public class CustomerController {
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping
 	public Flux<Customer> orderCustomers (@RequestBody List<Customer> customers){
-		return Flux.fromIterable(customers).sort(DUE_DATE_ORDER);
+		return Flux.fromStream(customers.stream().sorted(DUE_DATE_ORDER));
 	}
 }
